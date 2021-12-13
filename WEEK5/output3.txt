@@ -1,0 +1,13 @@
+
+Upper Case: T
+Lower Case: The
+Word:The 
+Upper Case: GIV
+Lower Case: GIVen
+Word:GIVen 
+Upper Case: SEN
+Lower Case: SENtence
+Word:SENtence 
+Lower Case: is
+Word:is 
+Upper Case: SAME

@@ -1,0 +1,15 @@
+%option noyywrap
+%{
+	#include<stdio.h>
+	#include "y.tab.h"
+	int yylval;
+%}
+%%
+[0-9]+ {
+	yylval = yytext[0]-'0';
+	return DIGIT;
+	}
+"+"|"-"|"*"|"/"|"("|")"|"\n" { return yytext[0];}
+. {}
+%%
+

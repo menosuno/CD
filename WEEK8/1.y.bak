@@ -1,0 +1,36 @@
+
+%{
+#include<stdio.h>
+#include<ctype.h>
+int yylex();
+void yyerror();
+int flag = 0;
+%}
+
+%token DIGIT
+%left '+''-'
+%left '*''/'
+
+%%
+line : expression {printf("answer = %d\n\n",(int)$$); return 0;}
+;
+expression : expression '+' expression {$$ = $1 + $3;}
+	   | expression '-' expression {$$ = $1 -$3;}
+	   | expression '*' expression {$$ = $1 * $3;}
+	   | expression '/' expression {$$ = $1 / $3;}
+	   | '(' expression ')' {$$ = $2;}
+	   | DIGIT      {$$ = $1;}
+;
+%%
+
+int main() {
+	printf("\nEnter the expression: ");
+	yyparse();
+
+	if (flag == 0)
+		printf("Valid expression\n");
+}
+void yyerror() {
+	printf("\nInvalid expression");
+	flag = 1;
+}

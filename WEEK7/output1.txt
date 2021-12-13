@@ -1,0 +1,6 @@
+ init;
+ while( condition){
+     init;
+ while( condition){
+        statement(s);    
+}statement(s);}

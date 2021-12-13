@@ -1,0 +1,44 @@
+%option noyywrap
+
+%{
+    #undef yywrap
+    #define yywrap() 1
+
+    int n = 0;
+    int ln = 1;
+%}
+
+%%
+"while"|"if"|"else" {
+                        n++;
+                        printf("\nKeywords: %s", yytext);
+                    }
+"int"|"float"       {
+                        n++;
+                        printf("\nKeywords: %s", yytext);
+                    }                    
+"<="|"=="|"="|"++"|"-"|"*"|"+" {
+                                    n++;
+                                    printf("\nOperator: %s", yytext);
+                               }
+[(){}|, ;] {
+                n++;
+                printf("\nSeperator: %s", yytext);
+           }
+[0-9]*"."[0-9]+ {
+                    n++;
+                    printf("\nFloat: %s", yytext);
+                }
+[0-9]+ {
+            n++;
+            printf("\nInteger: %s", yytext);
+        }                               
+%%
+
+int main()
+{
+    char fname[100];
+    yyin = fopen("file1.txt", "r");
+    yylex();
+    return 0;
+}

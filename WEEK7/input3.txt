@@ -1,0 +1,6 @@
+If ( x ! = y) 
+{ x=0 
+ 	 	If ( x > y) 
+{ x = 0 } 
+else  { x= 1 } 
+} else { x = 1} 
